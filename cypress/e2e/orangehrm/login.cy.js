@@ -18,7 +18,6 @@ describe('Orange HRM', () => {
         cy.url().should('contain','/login')
     })
 
-
     it('Positive Testing', () => {
         cy.get('[name="username"]').type(good_username)
         cy.get('[name="password"]').type(password)
