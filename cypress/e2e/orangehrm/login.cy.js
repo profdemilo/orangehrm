@@ -1,12 +1,12 @@
 /// <reference types="cypress" />
-describe('Orange HRM', () => {
+describe('Orange HRM - Login Test', () => {
 
     let good_username='Admin'
     let bad_password='hello1234'
     let password='admin123'
     beforeEach(() => {
 
-        cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+        cy.visit(Cypress.env('base_url'))
     })
 
     it('Negative Testing', () => {
