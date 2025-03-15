@@ -17,7 +17,7 @@ describe('Orange HRM - Admin Test', function() {
        cy.url().should('contain','/admin/viewSystemUsers')
        cy.get('.oxd-text--h6').should('contain', 'Admin').and('contain','User Management')
 
-       //searc functionality
+ 
        
       
 
