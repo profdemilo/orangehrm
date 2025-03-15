@@ -16,11 +16,8 @@ describe('Orange HRM - Admin Test', function() {
        cy.get('.oxd-main-menu-item--name').contains('Admin').click()//navigating to Admin menu
        cy.url().should('contain','/admin/viewSystemUsers')
        cy.get('.oxd-text--h6').should('contain', 'Admin').and('contain','User Management')
-
- 
-       
-      
-
+        let a =2
+        cy.log(a)
 
 
 
