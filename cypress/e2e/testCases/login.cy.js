@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+
 describe('Orange HRM - Login Test', () => {
 
     let good_username='Admin'
