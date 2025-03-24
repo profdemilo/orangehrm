@@ -16,7 +16,8 @@
     "url": "https://github.com/profdemilo/orangehrm/issues"
   },
   "homepage": "https://github.com/profdemilo/orangehrm#readme",
-  "dependencies": {
-    "cypress": "^14.1.0"
-  }
+  "devDependencies": {
+    "cypress": "^14.2.0"
+  },
+  "keywords": []
 }

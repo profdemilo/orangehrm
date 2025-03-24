@@ -1,28 +1,31 @@
 /// <reference types="cypress" />
+import loginPageObjects from "./loginPageObject"
+
 describe('Orange HRM - Login Test', () => {
 
-    let good_username='Admin'
-    let bad_password='hello1234'
-    let password='admin123'
+    let good_username = 'Admin'
+    let bad_password = 'hello1234'
+    let password = 'admin123'
+    const loginPage2 = new loginPageObjects()
+
     beforeEach(() => {
 
-        cy.visit(Cypress.env('base_url'))
+        cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
     })
 
     it('Negative Testing', () => {
-        
-        cy.get('[name="username"]').type(good_username)
-        cy.get('[name="password"]').type(bad_password)
-        cy.get('button').contains('Login').click()
-        cy.get('.oxd-alert-content--error').should('contain.text','Invalid credentials')
-        cy.url().should('contain','/login')
+        loginPage2.enterUsername(good_username)
+        loginPage2.enterPassword(bad_password)
+        loginPage2.loginButton().click()
+        loginPage2.loginErrorMessage('Invalid credentials')
+        cy.url().should('contain', '/login')
     })
 
     it('Positive Testing', () => {
-        cy.get('[name="username"]').type(good_username)
-        cy.get('[name="password"]').type(password)
-        cy.get('button').contains('Login').click()
-        cy.url().should('contain','/dashboard')
+        loginPage2.enterUsername(good_username)
+        loginPage2.enterPassword(password)
+        loginPage2.loginButton().click()
+        cy.url().should('contain', '/dashboard')
     })
 
 
