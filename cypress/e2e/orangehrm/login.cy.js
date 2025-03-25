@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-import loginPageObjects from "./loginPageObject"
+import loginPageObjects from "../pageObjects/loginPageObject"
 
 describe('Orange HRM - Login Test', () => {
 
