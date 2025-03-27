@@ -12,7 +12,7 @@ describe('Orange HRM - Login Test', () => {
 
     beforeEach(() => {
 
-        cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+        cy.visit('/')
       
     })
 
