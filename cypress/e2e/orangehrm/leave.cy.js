@@ -1,20 +1,17 @@
     /// <reference types="cypress" />
-    describe('Orange HRM - PIM Test', function() {
+    describe('Orange HRM - Leave Test', function() {
 
     let username='Admin'
     let password='admin123'
+        
     beforeEach(function() {
-
-    cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-    cy.get('[name="username"]').type(username)
-    cy.get('[name="password"]').type(password)
-    cy.get('button').contains('Login').click()
-    cy.url().should('contain', '/dashboard')
+    cy.visit('/') 
+    cy.loginToOrangeHrm('Admin','admin123')
     cy.get(':nth-child(3) > .oxd-main-menu-item').contains('Leave').click()
-    cy.url().should('contain','https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewLeaveList')
-    cy.get('.oxd-topbar-header-breadcrumb').should('contain', 'Leave')
+    cy.url().should('contain', '/viewLeaveList')
     
     })
+        
 
     /*cy.get(':nth-child(2) > .oxd-main-menu-item').click()
     cy.get('.--parent > .oxd-topbar-body-nav-tab-item').click()

@@ -1,21 +1,39 @@
 /// <reference types="cypress" />
-class loginPageObjects_1 {
-    elements = {
-        usernameTextbox: () => cy.get('[name="username"]'),
-        passwordTextbox: () => cy.get('[name="password"]'),
-        loginButton: () => cy.get('button').contains('Login'),
-        loginErrorMessage: () => cy.get('.oxd-alert-content--error')
-    }
-    enterUsername(value) {
-        this.elements.usernameTextbox().type(value)
-    }
-    enterPassword(value) {
-        this.elements.passwordTextbox().type(value)
-    }
-    clickLogin() {
-        this.elements.loginButton().click({force: true})
-    }
-    errorMessage(value) {
-        this.elements.loginErrorMessage().should('contain.text',value)
-    }
-} export default loginPageObjects_1;
+import loginPageObjects_1 from "../pageObjects/login_1.cy"
+
+describe('Orange HRM - Login Test', () => {
+
+let good_username='Admin'
+let bad_password='hello1234'
+let password='admin123'
+const loginPage = new loginPageObjects_1()
+
+beforeEach(() => {
+
+cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+      
+})
+
+it('Negative Testing', () => {
+   
+cy.screenshot('login_HomePage')
+loginPage.enterUsername(good_username)
+loginPage.enterPassword(bad_password)
+loginPage.clickLogin()
+loginPage.errorMessage('Invalid credentials')
+cy.url().should('contain','/login')
+cy.screenshot('nagativeTestingActualResult')
+
+})
+
+it('Positive Testing', () => {
+  
+cy.screenshot('positiveTesting')
+loginPage.enterUsername(good_username)
+loginPage.enterPassword(password)
+loginPage.clickLogin()
+cy.url().should('contain','/dashboard')
+cy.screenshot('positiveTestingclearActualResult')
+
+})
+})

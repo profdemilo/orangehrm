@@ -1,12 +1,12 @@
 /// <reference types="cypress" />
-import loginPageObjects from "../pageObjects/login.cy"
+import loginPageObjects from "../pageObjects/login"
 
 describe('Orange HRM - Login Test', () => {
 
 let good_username = 'Admin'
 let bad_password = 'hello1234'
 let password = 'admin123'
-const loginPage2 = new loginPageObjects
+const loginPage2 = new loginPageObjects()
 
 beforeEach(() => {
 

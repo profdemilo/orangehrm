@@ -1,6 +1,5 @@
-/// <reference types="cypress" />
-describe('Orange HRM - PIM Test', function() {
-   
+    /// <reference types="cypress" />
+    describe('Orange HRM - PIM Test', function() {
 
     let username='Admin'
     let password='admin123'
@@ -14,18 +13,16 @@ describe('Orange HRM - PIM Test', function() {
     cy.get(':nth-child(1) > .oxd-main-menu-item').contains('Admin').click()
     cy.url().should('contain','/web/index.php/admin/viewSystemUsers')
     cy.get('.oxd-topbar-header-breadcrumb').should('contain', 'Admin')
-   
-    
+
     })
 
     /*cy.get(':nth-child(2) > .oxd-main-menu-item').click()
     cy.get('.--parent > .oxd-topbar-body-nav-tab-item').click()
-    cy.get(':nth-child(1) > .oxd-topbar-body-nav-tab-link').click() */
-    
-  
+    cy.get(':nth-child(1) > .oxd-topbar-body-nav-tab-link').click()
+    */
   
     it('User Management', () => {
-        
+
     cy.get(':nth-child(1) > .oxd-topbar-body-nav-tab-item').click()
     cy.get(':nth-child(1) > .oxd-topbar-body-nav-tab-link').should('contain.text','Users').click()
     cy.get('.oxd-text.oxd-text--h5.oxd-table-filter-title').should('contain.text', 'System Users')
@@ -33,6 +30,7 @@ describe('Orange HRM - PIM Test', function() {
     cy.get('.oxd-text.oxd-text--h6.oxd-topbar-header-breadcrumb-module').should('contain.text', 'Admin')  
     cy.get('button').contains('Add').click()
     cy.url().should('contain', '/saveSystemUser')
+
     })
 
     it('Job', () => {
@@ -80,7 +78,7 @@ describe('Orange HRM - PIM Test', function() {
     cy.get('.oxd-text.oxd-text--h6.oxd-topbar-header-breadcrumb-module').should('contain.text', 'Admin')  
     cy.get('button').contains('Add').click()
     cy.url().should('contain', '/saveWorkShifts')  
-
+    
     }) 
 
     it('Organization', () => {
@@ -154,10 +152,11 @@ describe('Orange HRM - PIM Test', function() {
     cy.get('.oxd-text.oxd-text--h6.oxd-topbar-header-breadcrumb-module').should('contain.text', 'Admin')  
     cy.get('button').contains('Add').click()
     cy.url().should('contain', '/saveMemberships')
+    
     })
-
-   
+    
     it('Nationalities', () => {
+
     cy.get(':nth-child(5) > .oxd-topbar-body-nav-tab-item').click()
     cy.get('.oxd-dropdown-menu > :nth-child(1) > li').click()
     cy.get('.oxd-text.oxd-text--h6.orangehrm-main-title').contains('Nationalities')
@@ -165,10 +164,11 @@ describe('Orange HRM - PIM Test', function() {
     cy.get('.oxd-text.oxd-text--h6.oxd-topbar-header-breadcrumb-module').should('contain.text', 'Admin') 
     cy.get('button').contains('Add').click()
     cy.url().should('contain', '/saveNationality')
-    
+
     })
 
     it('Corporate Branding', () => {
+
     cy.get(':nth-child(5) > .oxd-topbar-body-nav-tab-item').click()
     cy.get('.oxd-dropdown-menu > :nth-child(2) > li').click()
     cy.get('.oxd-text.oxd-text--h6.orangehrm-main-title').contains('Corporate Branding')
@@ -179,6 +179,7 @@ describe('Orange HRM - PIM Test', function() {
  
     it('Configuration', () => {
     //Email Configuration
+
     cy.get(':nth-child(5) > .oxd-topbar-body-nav-tab-item').click()
     cy.get(':nth-child(3) > li > .oxd-topbar-body-nav-tab-link').click() 
     cy.get('.oxd-topbar-body-nav-tab-accordian > :nth-child(1) > a').should('contain.text','Email Configuration').click()
@@ -245,6 +246,7 @@ describe('Orange HRM - PIM Test', function() {
     cy.get('.oxd-topbar-body-nav-tab-accordian > :nth-child(8) > a').should('contain.text','LDAP Configuration').click()
     cy.url().should('contain','/ldapConfiguration')
     cy.get('.oxd-text.oxd-text--h6.oxd-topbar-header-breadcrumb-module').should('contain.text', 'Admin') 
+    
     })
     })
   

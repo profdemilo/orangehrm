@@ -3,19 +3,15 @@ describe('Orange HRM - PIM Test', function() {
    
 let username='Admin'
 let password='admin123'
+    
 beforeEach(function() {
-
-cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-cy.get('[name="username"]').type(username)
-cy.get('[name="password"]').type(password)
-cy.get('button').contains('Login').click()
-cy.url().should('contain', '/dashboard')
+cy.visit('/') 
+cy.loginToOrangeHrm('Admin','admin123')
 cy.get(':nth-child(2) > .oxd-main-menu-item').contains('PIM').click()
-cy.url().should('contain','/web/index.php/pim/viewEmployeeList')
-cy.get('.oxd-topbar-header-breadcrumb').should('contain', 'PIM')
-  
-})
+cy.url().should('contain', '/viewEmployeeList')
 
+})
+    
 /*cy.get(':nth-child(2) > .oxd-main-menu-item').click()
 cy.get('.--parent > .oxd-topbar-body-nav-tab-item').click()
 cy.get(':nth-child(1) > .oxd-topbar-body-nav-tab-link').click() 

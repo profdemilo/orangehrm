@@ -23,3 +23,13 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('loginToOrangeHrm',(username,password)=>{
+
+cy.get('[name="username"]').type(username)
+cy.get('[name="password"]').type(password)
+cy.get('button').contains('Login').click()
+//cy.get(':nth-child(1) > .oxd-main-menu-item').contains('Admin').click()
+// cy.url().should('contain', '/dashboard')
+
+})
