@@ -86,3 +86,16 @@ cy.url().should('contain', 'https://opensource-demo.orangehrmlive.com/web/index.
 
 })
 })
+/*cy.get(':nth-child(5) > .oxd-topbar-body-nav-tab-item').click()
+cy.get(':nth-child(1) > li > .oxd-topbar-body-nav-tab-link').click() // nationalities
+    
+cy.get(':nth-child(5) > .oxd-topbar-body-nav-tab-item').click()
+cy.get('.oxd-dropdown-menu > :nth-child(2) > li').click() //Corperate branding
+cy.get('.oxd-button--secondary').click()// publish
+    
+cy.get(':nth-child(5) > .oxd-topbar-body-nav-tab-item').click()
+cy.get(':nth-child(3) > li > .oxd-topbar-body-nav-tab-link').click() //configuration
+cy.get('.oxd-topbar-body-nav-tab-accordian > :nth-child(1) > a').click() //email configuration
+cy.get('.oxd-button--secondary').click() // save email config
+cy.get('.oxd-toast') //successfully save
+*/
