@@ -1,5 +1,5 @@
-// @ts-ignore
-import Login from '../../PageObject/Login.js'
+
+import LoginPage from '../../PageObject/LoginPage.js'
 
 describe('orange - login page', ()=> {
     const lg = new Login()

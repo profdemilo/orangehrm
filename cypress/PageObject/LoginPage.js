@@ -1,6 +1,6 @@
-//cypress/pageObject/login.js
+//cypress/pageObject/loginPage.js
 
-class Login {
+class LoginPage {
     
     getUserName(userName) {
         cy.get('[name="username"]').type(userName)
