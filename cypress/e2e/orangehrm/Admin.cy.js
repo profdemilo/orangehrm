@@ -2,11 +2,9 @@
 
 import AdminPage from '../../PageObject/AdminPage.js'
 
-
 describe('Orange HRM - Admin page', ()=> {
  
      const adminPage = new AdminPage()
-
      //define varibles
      let userName = 'Admin'
      let wrong_username ='notcorrect'
@@ -15,10 +13,9 @@ describe('Orange HRM - Admin page', ()=> {
 
       
       beforeEach(() => {
-         
-    adminPage.visit('')
-    adminPage.Login('Admin', 'admin123')
-    adminPage.navigateToAdminPage()
+       adminPage.visit('')
+       adminPage.Login('Admin', 'admin123')
+       adminPage.navigateToAdminPage()
       })
 
 it('Verify Admin Page Header', ()=> {
@@ -28,12 +25,10 @@ it('Verify Admin Page Header', ()=> {
 })
  
  it('verify search functionality with existing user', ()=> {
-
-   adminPage.searchUser('Admin')  
+    adminPage.searchUser('Admin')  
  })
 
 it('verify search functinality with non existing user', ()=> {
-   
    adminPage.searchUser('notcorrect123')  
    adminPage.getErrrorMessage()
 })
@@ -46,7 +41,6 @@ it('User Management dropdown menu', ()=> {
 })
 
 it('job', ()=>{
-   
    const links = [
       { index: 0, url: '/admin/viewJobTitleList' },    
       { index: 1, url: '/admin/viewPayGrades' },          
@@ -57,6 +51,7 @@ it('job', ()=>{
   
   adminPage.clickMenuOption(1,0) 
   adminPage.verifyUrl('/admin/viewJobTitleList')
+ 
 
   adminPage.clickMenuOption(1,1) 
   adminPage.verifyUrl('/admin/viewPayGrades')
@@ -72,12 +67,9 @@ it('job', ()=>{
 })
 
  it('Organization drop down menu', ()=> {
-    
-   const links = [
-      {index: 0, url: '/admin/viewOrganizationGeneralInformation'}, 
-      {index: 1, url: '/admin/viewLocations'}, 
-      {index: 2, url: 'admin/viewCompanyStructure'}  
-   ]
+    const links = [
+      {index: 0 }, {index: 1 }, {index: 2 } ]
+      
       adminPage.clickMenuOption(2,0) 
       adminPage.verifyUrl('/admin/viewOrganizationGeneralInformation')
 

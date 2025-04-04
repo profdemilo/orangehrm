@@ -2,7 +2,7 @@
 import LoginPage from '../../PageObject/LoginPage.js'
 
 describe('orange - login page', ()=> {
-    const lg = new Login()
+    const lg = new LoginPage()
 
     //define variables
     let userName = 'Admin'

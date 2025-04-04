@@ -5,13 +5,28 @@ class AdminPage {
     visit() {
         cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php')
     }
-    Login(userName, password) {
-        cy.get('[name="username"]').type(userName)
-        cy.get('[name="password"]').type(password)
+    setUserName(userName) {
+        cy.get('input[name="username"]').type(userName)
+    }
+    setPassword(password) {
+        cy.get('input[name="password"]').type(password)
+    }
+    clickLogin() {
         cy.get('button').contains('Login').click() 
     }
-    navigateToAdminPage() {
+    Login(userName, password) {
+        cy.get('input[name="username"]').type(userName);
+        cy.get('input[name="password"]').type(password);
+
+        cy.get('button').contains('Login').click() 
+    }
+    checkUrl() {
        cy.url().should('contain', '/dashboard')
+    }
+    getSidePanel() {
+        cy.get('aside').should('be.visible')
+    }
+    navigateToAdminPage() {
        cy.get('.oxd-main-menu-item--name').should('be.visible')
         .contains('Admin').click()
        cy.url().should('contain', '/admin/viewSystemUsers')
@@ -21,6 +36,12 @@ class AdminPage {
          .and('contain','User Management')
        cy.get('.orangehrm-upgrade-link').should('be.visible') 
          .and('not.be.disabled')
+    }
+    PageContent() {
+        cy.get('.orangehrm-header-container').within(() =>{
+            cy.get('.orangehrm-main-title').should('contain', 'Job Titles')
+            
+        })
     }
     CheckDropDownMenu() {
        cy.get('.oxd-userdropdown').should('exist')
