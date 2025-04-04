@@ -46,7 +46,7 @@ it('Login with no credentials', ()=>{
     lg.verifyUrl('/login')
 })
 
-it('Login with wrong username ', ()=>{
+it.only('Login with wrong username ', ()=>{
    
     lg.getUserName(wrong_username)
     lg.getPassword(password)

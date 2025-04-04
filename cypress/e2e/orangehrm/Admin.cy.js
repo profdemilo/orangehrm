@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 
 import AdminPage from '../../PageObject/AdminPage.js'
+import PimPage from '../../PageObject/PimPage.js'
 
 describe('Orange HRM - Admin page', ()=> {
  
@@ -15,43 +16,42 @@ describe('Orange HRM - Admin page', ()=> {
       beforeEach(() => {
        adminPage.visit('')
        adminPage.Login('Admin', 'admin123')
-       adminPage.navigateToAdminPage()
+       adminPage.verifyUrl('/dashboard')
       })
 
 it('Verify Admin Page Header', ()=> {
    
+   adminPage.navigateToAdminPage()
+   adminPage.verifyUrl('/admin/viewSystemUsers')
    adminPage.VerifyPageHeader()
-   adminPage.CheckDropDownMenu()  
+   adminPage.CheckUserInfo()  
 })
  
  it('verify search functionality with existing user', ()=> {
-    adminPage.searchUser('Admin')  
+
+   adminPage.navigateToAdminPage()
+    adminPage.searchUser('Admin') 
  })
 
-it('verify search functinality with non existing user', ()=> {
-   adminPage.searchUser('notcorrect123')  
+it('verify search functinality with notexisting user', ()=> {
+
+   adminPage.navigateToAdminPage()
+   adminPage.searchUser('notcorrect123')
    adminPage.getErrrorMessage()
 })
 
-it('User Management dropdown menu', ()=> {
+it('User Management menu', ()=> {
   
-   cy.get('.oxd-topbar-body-nav-tab').eq(0).click()
-   cy.get('.oxd-topbar-body-nav-tab-link').should('contain.text', 'Users').click()
-   cy.url().should('contain', '/admin/viewSystemUsers')   
+   adminPage.navigateToAdminPage()
+   adminPage.clickMenuOption(0,0) 
+   adminPage.verifyUrl('/admin/viewSystemUsers') 
 })
 
-it('job', ()=>{
-   const links = [
-      { index: 0, url: '/admin/viewJobTitleList' },    
-      { index: 1, url: '/admin/viewPayGrades' },          
-      { index: 2, url: 'admin/employmentStatus' },       
-      { index: 3, url: '/admin/jobCategory' },            
-      { index: 4, url: '/admin/workShift' }              
-  ]
+it('job Menu ', ()=>{
   
+   adminPage.navigateToAdminPage()
   adminPage.clickMenuOption(1,0) 
   adminPage.verifyUrl('/admin/viewJobTitleList')
- 
 
   adminPage.clickMenuOption(1,1) 
   adminPage.verifyUrl('/admin/viewPayGrades')
@@ -66,58 +66,56 @@ it('job', ()=>{
   adminPage.verifyUrl('/admin/workShift')
 })
 
- it('Organization drop down menu', ()=> {
-    const links = [
-      {index: 0 }, {index: 1 }, {index: 2 } ]
-      
-      adminPage.clickMenuOption(2,0) 
-      adminPage.verifyUrl('/admin/viewOrganizationGeneralInformation')
+ it('Organization menu', ()=> {
+    
+   adminPage.navigateToAdminPage()
+   adminPage.clickMenuOption(2,0) 
+   adminPage.verifyUrl('/admin/viewOrganizationGeneralInformation') //General information
 
-      adminPage.clickMenuOption(2,1) 
-      adminPage.verifyUrl('/admin/viewLocations')
+   adminPage.clickMenuOption(2,1)  //Location
+   adminPage.verifyUrl('/admin/viewLocations')
 
-      adminPage.clickMenuOption(2,2) 
-      adminPage.verifyUrl('admin/viewCompanyStructure') 
+   adminPage.clickMenuOption(2,2) //Structure
+   adminPage.verifyUrl('admin/viewCompanyStructure') 
 })
 
  it('Qualifications', ()=> {
-   const links = [
-      {index: 0, url: '/admin/viewSkills'},
-      {index: 1, url: '/admin/viewEducation'},
-      {index: 2, url: '/admin/viewLicenses'},
-      {index: 3, url: '/admin/viewLanguages'},
-      {index: 4, url: '/admin/membership'}
-]
+  
+   adminPage.navigateToAdminPage()  //Skills
    adminPage.clickMenuOption(3,0) 
    adminPage.verifyUrl('/admin/viewSkills')
+   adminPage.getRecordTable()
 
    adminPage.clickMenuOption(3,1) 
-   adminPage.verifyUrl('/admin/viewEducation')
+   adminPage.verifyUrl('/admin/viewEducation')  //Education
+   adminPage.getRecordTable()
 
    adminPage.clickMenuOption(3,2) 
-   adminPage.verifyUrl('/admin/viewLicenses') 
+   adminPage.verifyUrl('/admin/viewLicenses') //Licenses
+   adminPage.getRecordTable()
 
    adminPage.clickMenuOption(3,3) 
-   adminPage.verifyUrl('/admin/viewLanguages')
+   adminPage.verifyUrl('/admin/viewLanguages')  //Languages
+   adminPage.getRecordTable()
 
    adminPage.clickMenuOption(3,4) 
-   adminPage.verifyUrl('/admin/membership')
+   adminPage.verifyUrl('/admin/membership')  //Membership
+   adminPage.getRecordTable()
+})   
 
- })   
+it('More Menu options', ()=> {
 
-it('Nationalities', ()=> {
+   adminPage.navigateToAdminPage()  
+   adminPage.clickMenuOption(4,0) 
+   adminPage.verifyUrl('/admin/nationality')  //Membership
+   adminPage.getRecordTable()
 
-   cy.get('.oxd-topbar-body-nav-tab').eq(4).click()
-   cy.url().should('include', '/admin/nationality')
+   adminPage.clickMenuOption(4,1) 
+   adminPage.verifyUrl('/admin/addTheme')  //Membership
+ 
+   adminPage.clickMenuOption(4,2) 
 })
 
-it('Coperate branding', ()=> {
-
-   cy.get('.oxd-topbar-body-nav-tab.--parent.--visited').should('contain', 'Coporate Branding').click()
-   cy.url().should('include', '/admin/addTheme')
-
-
-})
 
 })
    

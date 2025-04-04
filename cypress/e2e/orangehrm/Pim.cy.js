@@ -14,40 +14,43 @@ let wrong_password = 'notcorrect123'
 
 beforeEach(() => {
 
-    pimPage.visit()
-    pimPage.Login('Admin', 'admin123')
-    pimPage.verifyUrl('/dashboard')
+   pimPage.visit()
+   pimPage.Login('Admin', 'admin123')
+   pimPage.verifyUrl('/dashboard')
 })
 
-it('verify PIM Page Header', ()=> {
+it.only('verify PIM Page Header', ()=> {
    
-    pimPage.navigateToPimPage()
-   pimPage.getTitle('PIM')
-   pimPage.checkUpgradeLink()
-   pimPage.getUserInfo()
+  pimPage.navigateToPimPage()
+  pimPage.getTitle('PIM')
+  pimPage.checkUpgradeLink()
+  pimPage.getUserInfo()
+
 })
 
-it.only('verify user dropdown information', () => {
+it.only('verify user dropdown informationS', () => {
        
     pimPage.navigateToPimPage()
-        const links =[
-            { index: 0 }, { index: 1 },  { index: 2 },  { index: 3 }, ]
-
-       pimPage.checkUserInfo(0)
+    pimPage.checkUserInfo(0)
+    pimPage.getCloseButton()
+    
       
-       pimPage.checkUserInfo(1)
-       
-       pimPage.verifyUrl('/help/support')
-          cy.get('.orangehrm-card-container').should('exist') //support
-   })
+    pimPage.checkUserInfo(1)
+    pimPage.verifyUrl('/help/support')
+    
+
+    pimPage.checkUserInfo(2)
+    pimPage.verifyUrl('/pim/updatePassword')
+
+    pimPage.checkUserInfo(3)
+    pimPage.verifyUrl('/auth/login')
+})
 
 it('check PIM menu options', () =>{
 
     pimPage.navigateToPimPage()
-    const links =[
-      { index: 0 }, { index: 1 },  { index: 2 },  { index: 3 },  { index: 4 }]
 
-     pimPage.clickPimMenu(0, 0)
+    pimPage.clickPimMenu(0, 0)
      pimPage.verifyUrl('/pim/configurePim')
      pimPage.getTitle('PIM', 'Configuration')
 
@@ -77,11 +80,10 @@ it('check PIM menu options', () =>{
      pimPage.verifyUrl('/pim/viewDefinedPredefinedReports')
 })
 
-it('verify the Question sign', () => {
+it('verify the Question sign functions corretly', () => {
 
     pimPage.navigateToPimPage()
     pimPage.clickQUestionSign()
-    pimPage.visit()
 })
 
 

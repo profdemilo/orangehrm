@@ -36,6 +36,14 @@ class PimPage {
         cy.get('.oxd-topbar-header-userarea').click()
         cy.get('.oxd-userdropdown-link').eq(optionIndex).click()
     }
+    verifyPageContent(expectedContent) {
+        cy.get(expectedContent).should('be.visible')
+    }
+    getCloseButton() {
+        cy.get('.oxd-dialog-sheet--gutters').within(()=>{
+            cy.get('.oxd-dialog-close-button').click()
+        })
+    }
     clickPimMenu(menuIndex, OptionIndex) {
 
         cy.get('.oxd-topbar-body-nav-tab').eq(menuIndex).click()
@@ -46,11 +54,10 @@ class PimPage {
         cy.get('.bi-question-lg').should('be.visible')
         .and('not.be.disabled')
     }
-
-   
-   getOtherOption(menuIndex) {
+    getOtherOption(menuIndex) {
         cy.get('.oxd-topbar-body-nav-tab').eq(menuIndex).click()
    }
+
    }
    export default PimPage;
     
