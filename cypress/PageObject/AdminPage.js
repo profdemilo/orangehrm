@@ -5,15 +5,7 @@ class AdminPage {
     visit() {
         cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php')
     }
-    setUserName(userName) {
-        cy.get('input[name="username"]').type(userName)
-    }
-    setPassword(password) {
-        cy.get('input[name="password"]').type(password)
-    }
-    clickLogin() {
-        cy.get('button').contains('Login').click() 
-    }
+    
     Login(userName, password) {
         cy.get('input[name="username"]').type(userName);
         cy.get('input[name="password"]').type(password);
